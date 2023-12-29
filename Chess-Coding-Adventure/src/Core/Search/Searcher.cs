@@ -1,5 +1,6 @@
 ﻿namespace Chess.Core
 {
+	//using Chess_Coding_Adventure.src.Core;
 	using System;
 	using static System.Math;
 
@@ -61,32 +62,37 @@
 		public void StartSearch()
 		{
 			// Initialize search
-			bestEvalThisIteration = bestEval = 0;
-			bestMoveThisIteration = bestMove = Move.NullMove;
+			//bestEvalThisIteration = bestEval = 0;
+			//bestMoveThisIteration = bestMove = Move.NullMove;
 
-			isPlayingWhite = board.IsWhiteToMove;
+			//isPlayingWhite = board.IsWhiteToMove;
 
-			moveOrderer.ClearHistory();
-			repetitionTable.Init(board);
+			//moveOrderer.ClearHistory();
+			//repetitionTable.Init(board);
 
-			// Initialize debug info
-			CurrentDepth = 0;
-			debugInfo = "Starting search with FEN " + FenUtility.CurrentFen(board);
-			searchCancelled = false;
-			searchDiagnostics = new SearchDiagnostics();
-			searchIterationTimer = new System.Diagnostics.Stopwatch();
-			searchTotalTimer = System.Diagnostics.Stopwatch.StartNew();
+			//// Initialize debug info
+			//CurrentDepth = 0;
+			//debugInfo = "Starting search with FEN " + FenUtility.CurrentFen(board);
+			//searchCancelled = false;
+			//searchDiagnostics = new SearchDiagnostics();
+			//searchIterationTimer = new System.Diagnostics.Stopwatch();
+			//searchTotalTimer = System.Diagnostics.Stopwatch.StartNew();
 
-			// Search
-			RunIterativeDeepeningSearch();
+			//// Search
+			//RunIterativeDeepeningSearch();
 
 
-			// Finish up
-			// In the unlikely event that the search is cancelled before a best move can be found, take any move
-			if (bestMove.IsNull)
-			{
-				bestMove = moveGenerator.GenerateMoves(board)[0];
-			}
+			//// Finish up
+			//// In the unlikely event that the search is cancelled before a best move can be found, take any move
+			//if (bestMove.IsNull)
+			//{
+			//	bestMove = moveGenerator.GenerateMoves(board)[0];
+			//
+			//}
+
+			MyBot bot = new MyBot(2, 0.5);
+
+			Move bestMove = bot.Think(board);
 			OnSearchComplete?.Invoke(bestMove);
 			searchCancelled = false;
 		}

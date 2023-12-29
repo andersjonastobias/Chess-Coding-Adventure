@@ -163,11 +163,12 @@ public class Bot
 
 	bool TryGetOpeningBookMove(out Move bookMove)
 	{
-		if (useOpeningBook && board.PlyCount <= maxBookPly && book.TryGetBookMove(board, out string moveString))
-		{
-			bookMove = MoveUtility.GetMoveFromUCIName(moveString, board);
-			return true;
-		}
+		//TODO ANK Never use bookmove
+		//if (useOpeningBook && board.PlyCount <= maxBookPly && book.TryGetBookMove(board, out string moveString))
+		//{
+		//	bookMove = MoveUtility.GetMoveFromUCIName(moveString, board);
+		//	return true;
+		//}
 		bookMove = Move.NullMove;
 		return false;
 	}
